@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --color-paper: #f6f4ee;
+  --color-paper-deep: #eeeae0;
+  --color-card: #fffdf8;
+  --color-ink: #17150f;
+  --color-ink-soft: #4c4637;
+  --color-muted: #857d6b;
+  --color-line: #e3ded1;
+  --color-line-strong: #cec7b4;
+  --color-moss: #1f6b52;
+  --color-moss-deep: #15503d;
+  --color-moss-soft: #e6f0ea;
+  --color-clay: #a9502b;
+  --color-clay-soft: #f7e9e2;
+  --color-sand: #efeadf;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-moss);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-moss);
+    outline-offset: 2px;
+  }
+}
+
+/* Barra de rolagem discreta nas listas horizontais de dias */
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
