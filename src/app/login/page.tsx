@@ -102,7 +102,7 @@ export default function LoginPage() {
           <p className="mt-8 text-xs text-muted">
             Só usamos seu nome e foto públicas do GitHub para identificar o
             painel.{" "}
-            <Link href="/b/studio-navalha" className="text-navy hover:underline">
+            <Link href="/b/doze-e-meia" className="text-navy hover:underline">
               Ver uma página de exemplo
             </Link>
             .

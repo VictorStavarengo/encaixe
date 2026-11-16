@@ -61,7 +61,9 @@ async function UserBox() {
           </span>
         )}
         <div className="min-w-0">
-          <p className="truncate text-sm font-medium">{user.name ?? "Conta"}</p>
+          <p className="line-clamp-2 text-sm font-medium leading-snug">
+            {user.name ?? "Conta"}
+          </p>
           <p className="truncate text-xs text-muted">{user.email}</p>
         </div>
       </div>

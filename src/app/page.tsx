@@ -78,7 +78,7 @@ export default function HomePage() {
             <a href="#recursos" className="transition-colors hover:text-ink">
               Recursos
             </a>
-            <Link href="/b/studio-navalha" className="transition-colors hover:text-ink">
+            <Link href="/b/doze-e-meia" className="transition-colors hover:text-ink">
               Exemplo
             </Link>
           </nav>
@@ -124,7 +124,7 @@ export default function HomePage() {
                 Criar minha agenda com GitHub
               </Link>
               <Link
-                href="/b/studio-navalha"
+                href="/b/doze-e-meia"
                 className="rounded-xl border border-line-strong px-5 py-3 text-sm font-medium text-ink transition-colors hover:border-navy/40 hover:bg-card"
               >
                 Ver demonstração
@@ -143,7 +143,7 @@ export default function HomePage() {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-xs uppercase tracking-[0.14em] text-muted">
-                    studio navalha
+                    barbearia doze e meia
                   </p>
                   <p className="mt-1 text-lg font-semibold">Escolha seu horário</p>
                 </div>
@@ -306,7 +306,7 @@ export default function HomePage() {
                   Criar agenda
                 </Link>
                 <Link
-                  href="/b/studio-navalha"
+                  href="/b/doze-e-meia"
                   className="rounded-xl border border-white/30 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-white/10"
                 >
                   Ver demo

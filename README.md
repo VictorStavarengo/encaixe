@@ -6,7 +6,7 @@ Plataforma de agendamento para pequenos negócios (barbearias, clínicas, estúd
 
 ## Funcionalidades
 
-- **Página pública por slug** (`/b/studio-navalha`) com serviços, agenda de 14 dias e horários livres calculados a cada requisição — nada de slots fixos no cliente.
+- **Página pública por slug** (`/b/doze-e-meia`) com serviços, agenda de 14 dias e horários livres calculados a cada requisição — nada de slots fixos no cliente.
 - **Reserva sem conflito**: índice único parcial no Postgres + transação `Serializable` garantem que dois clientes não fiquem com o mesmo horário, mesmo em cliques simultâneos.
 - **Login real** com GitHub (Auth.js v5, sessão no banco). O painel só existe autenticado; o negócio é criado automaticamente no primeiro acesso.
 - **Painel do negócio**: visão geral com indicadores, confirmação/cancelamento de agendamentos, CRUD de serviços, grade de horários por dia da semana e configuração da página pública (slug, endereço, fuso).
@@ -55,7 +55,7 @@ npm run db:seed
 npm run dev
 ```
 
-O seed cria o negócio **Studio Navalha** em `/b/studio-navalha`, com três serviços, expediente de terça a sábado e quatro agendamentos de exemplo.
+O seed cria o negócio **Barbearia Doze e Meia** em `/b/doze-e-meia`, com três serviços, expediente de terça a sábado e quatro agendamentos de exemplo.
 
 Para entrar no painel, crie um OAuth App em GitHub → Settings → Developer settings → OAuth Apps com callback `http://localhost:3000/api/auth/callback/github` e coloque as credenciais no `.env`. Sem elas a tela de login avisa que o provedor não está configurado.
 

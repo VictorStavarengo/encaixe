@@ -46,21 +46,21 @@ function nextOpenDays(count: number): string[] {
 async function main() {
   const user = await prisma.user.upsert({
     where: { email: "demo@encaixe.app" },
-    update: { name: "Studio Navalha" },
+    update: { name: "Barbearia Doze e Meia" },
     create: {
       id: "user_demo",
       email: "demo@encaixe.app",
-      name: "Studio Navalha",
+      name: "Barbearia Doze e Meia",
     },
   });
 
-  await prisma.business.deleteMany({ where: { slug: "studio-navalha" } });
+  await prisma.business.deleteMany({ where: { slug: "doze-e-meia" } });
 
   const business = await prisma.business.create({
     data: {
       ownerId: user.id,
-      name: "Studio Navalha",
-      slug: "studio-navalha",
+      name: "Barbearia Doze e Meia",
+      slug: "doze-e-meia",
       phone: "(11) 98765-4321",
       address: "Rua Aurora, 214 · Vila Madalena, São Paulo",
       timezone: TZ,

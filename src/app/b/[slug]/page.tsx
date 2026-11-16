@@ -107,7 +107,7 @@ async function BookingContent({
       <header className="border-b border-line bg-card/60">
         <div className="mx-auto flex w-full max-w-3xl items-start gap-4 px-5 py-8">
           <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-navy text-lg font-semibold uppercase text-white shadow-[0_2px_8px_-3px_rgba(13,35,64,0.6)]">
-            {business.name.slice(0, 2)}
+            {initials(business.name)}
           </span>
           <div className="flex min-w-0 flex-col gap-1">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
@@ -312,6 +312,16 @@ function SectionHeader({
       {aside}
     </div>
   );
+}
+
+function initials(name: string) {
+  return name
+    .split(/\s+/)
+    .filter((word) => word.length > 2)
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
 }
 
 function BookingSkeleton() {
