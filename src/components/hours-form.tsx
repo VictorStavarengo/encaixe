@@ -29,7 +29,7 @@ export function HoursForm({
       {initial.map((hours, weekday) => (
         <div
           key={weekday}
-          className="flex flex-col gap-3 rounded-xl border border-line px-4 py-3 sm:grid sm:grid-cols-[140px_auto_auto_auto_auto] sm:items-center sm:gap-4"
+          className="flex flex-col gap-3 rounded-xl border border-line px-4 py-3 sm:grid sm:grid-cols-[140px_auto_1fr] sm:items-center sm:gap-4"
         >
           <div className="flex items-center justify-between gap-3 sm:contents">
             <p className="text-sm font-medium capitalize">{weekdayName(weekday)}</p>
@@ -43,7 +43,7 @@ export function HoursForm({
                   next[weekday] = event.target.checked;
                   setClosedDays(next);
                 }}
-                className="h-4 w-4 rounded border-line-strong accent-moss"
+                className="h-4 w-4 rounded border-line-strong accent-navy"
               />
               fechado
             </label>

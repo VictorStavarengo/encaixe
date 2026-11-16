@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import { logoutAction } from "@/app/actions/dashboard";
+import { Brand } from "@/components/brand";
 import { DashboardNav } from "@/components/dashboard-nav";
 import { requireSessionUser } from "@/lib/business";
 
@@ -10,8 +11,8 @@ export default function DashboardLayout({ children }: LayoutProps<"/dashboard">)
       <aside className="border-b border-line bg-card/60 lg:sticky lg:top-0 lg:h-screen lg:border-r lg:border-b-0">
         <div className="flex h-full flex-col gap-6 px-4 py-5">
           <div className="flex items-center justify-between gap-3">
-            <Link href="/dashboard" className="text-lg font-semibold tracking-tight">
-              encaixe
+            <Link href="/dashboard" aria-label="Encaixe — painel">
+              <Brand />
             </Link>
             <Link
               href="/"

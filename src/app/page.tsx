@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Brand } from "@/components/brand";
 
 const steps = [
   {
@@ -22,18 +23,43 @@ const features = [
   {
     title: "Sem conflito de horário",
     text: "Duas reservas no mesmo horário são bloqueadas no banco, inclusive em acessos simultâneos.",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <path d="M12 3l7 3v6c0 4.2-2.9 7.2-7 9-4.1-1.8-7-4.8-7-9V6l7-3Z" />
+        <path d="M9 12l2 2 4-4" />
+      </svg>
+    ),
   },
   {
     title: "E-mail automático",
     text: "Confirmação com serviço, data, endereço e link de cancelamento enviada no ato da reserva.",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <rect x="3" y="5" width="18" height="14" rx="2.5" />
+        <path d="M4 7l8 6 8-6" />
+      </svg>
+    ),
   },
   {
     title: "Cliente sem cadastro",
     text: "Ninguém precisa criar conta para marcar. Só quem administra a agenda faz login.",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <circle cx="12" cy="8" r="3.5" />
+        <path d="M5 20c.8-3.4 3.6-5 7-5s6.2 1.6 7 5" />
+      </svg>
+    ),
   },
   {
     title: "Renderizado no servidor",
     text: "A página pública chega pronta do servidor com os horários do dia, sem esperar JavaScript.",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <rect x="3" y="4" width="18" height="7" rx="2" />
+        <rect x="3" y="14" width="18" height="6" rx="2" />
+        <path d="M7 7.5h.01M7 17h.01" />
+      </svg>
+    ),
   },
 ];
 
@@ -42,30 +68,30 @@ export default function HomePage() {
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-20 border-b border-line/80 bg-paper/85 backdrop-blur">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4">
-          <Link href="/" className="text-lg font-semibold tracking-tight">
-            encaixe
+          <Link href="/" aria-label="Encaixe — página inicial">
+            <Brand />
           </Link>
           <nav className="hidden items-center gap-7 text-sm text-ink-soft sm:flex">
-            <a href="#como-funciona" className="hover:text-ink">
+            <a href="#como-funciona" className="transition-colors hover:text-ink">
               Como funciona
             </a>
-            <a href="#recursos" className="hover:text-ink">
+            <a href="#recursos" className="transition-colors hover:text-ink">
               Recursos
             </a>
-            <Link href="/b/studio-navalha" className="hover:text-ink">
+            <Link href="/b/studio-navalha" className="transition-colors hover:text-ink">
               Exemplo
             </Link>
           </nav>
           <div className="flex items-center gap-2">
             <Link
               href="/login"
-              className="rounded-xl px-3 py-2 text-sm font-medium text-ink-soft hover:text-ink"
+              className="rounded-xl px-3 py-2 text-sm font-medium text-ink-soft transition-colors hover:text-ink"
             >
               Entrar
             </Link>
             <Link
               href="/login"
-              className="rounded-xl bg-moss px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-moss-deep"
+              className="rounded-xl bg-navy px-4 py-2 text-sm font-medium text-white shadow-[0_1px_2px_rgba(13,35,64,0.28)] transition-colors hover:bg-navy-deep"
             >
               Criar agenda
             </Link>
@@ -76,7 +102,8 @@ export default function HomePage() {
       <main className="flex-1">
         <section className="mx-auto grid w-full max-w-6xl items-center gap-14 px-5 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
           <div>
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-moss">
+            <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-navy">
+              <span className="h-1.5 w-1.5 rounded-full bg-navy" aria-hidden />
               agendamento online
             </p>
             <h1 className="mt-4 text-4xl leading-[1.05] font-semibold tracking-tight text-ink sm:text-5xl lg:text-6xl">
@@ -92,25 +119,26 @@ export default function HomePage() {
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
                 href="/login"
-                className="rounded-xl bg-ink px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-black"
+                className="rounded-xl bg-navy px-5 py-3 text-sm font-medium text-white shadow-[0_2px_10px_-4px_rgba(13,35,64,0.6)] transition-colors hover:bg-navy-deep"
               >
                 Criar minha agenda com GitHub
               </Link>
               <Link
                 href="/b/studio-navalha"
-                className="rounded-xl border border-line-strong px-5 py-3 text-sm font-medium text-ink transition-colors hover:bg-card"
+                className="rounded-xl border border-line-strong px-5 py-3 text-sm font-medium text-ink transition-colors hover:border-navy/40 hover:bg-card"
               >
                 Ver demonstração
               </Link>
             </div>
-            <p className="mt-6 text-xs text-muted">
-              Demo pronta: barbearia com 3 serviços, horários de terça a sábado
-              e agendamentos reais.
+            <p className="mt-6 flex items-start gap-2 text-xs text-muted">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy/50" aria-hidden />
+              Demo pronta: barbearia com 3 serviços, horários de terça a sábado e
+              agendamentos reais.
             </p>
           </div>
 
           <div className="relative">
-            <div className="absolute -inset-4 rounded-[28px] bg-moss-soft" aria-hidden />
+            <div className="absolute -inset-4 rounded-[28px] bg-navy-soft" aria-hidden />
             <div className="relative rounded-3xl border border-line bg-card p-6 shadow-[0_18px_50px_-30px_rgba(23,21,15,0.45)]">
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -119,7 +147,7 @@ export default function HomePage() {
                   </p>
                   <p className="mt-1 text-lg font-semibold">Escolha seu horário</p>
                 </div>
-                <span className="rounded-full bg-moss-soft px-2.5 py-1 text-[11px] font-medium text-moss-deep">
+                <span className="rounded-full bg-navy-soft px-2.5 py-1 text-[11px] font-medium text-navy-deep">
                   14 dias
                 </span>
               </div>
@@ -134,7 +162,7 @@ export default function HomePage() {
                     key={day}
                     className={
                       index === 1
-                        ? "flex-1 rounded-xl bg-moss px-3 py-2.5 text-center text-white"
+                        ? "flex-1 rounded-xl bg-navy px-3 py-2.5 text-center text-white"
                         : "flex-1 rounded-xl border border-line px-3 py-2.5 text-center text-ink-soft"
                     }
                   >
@@ -153,7 +181,7 @@ export default function HomePage() {
                       key={time}
                       className={
                         index === 4
-                          ? "rounded-lg border border-moss bg-moss-soft px-2 py-2 text-center text-xs font-medium text-moss-deep"
+                          ? "rounded-lg border border-navy bg-navy-soft px-2 py-2 text-center text-xs font-medium text-navy-deep"
                           : "rounded-lg border border-line px-2 py-2 text-center text-xs text-ink-soft"
                       }
                     >
@@ -167,11 +195,11 @@ export default function HomePage() {
                 <p className="text-xs text-muted">Corte + barba · 1h15</p>
                 <div className="mt-1 flex items-center justify-between">
                   <p className="text-sm font-medium">Quinta, 20 de nov · 14:00</p>
-                  <span className="text-sm font-semibold text-moss">R$ 90</span>
+                  <span className="text-sm font-semibold text-navy">R$ 90</span>
                 </div>
               </div>
 
-              <div className="mt-3 rounded-xl bg-ink px-4 py-3 text-center text-sm font-medium text-white">
+              <div className="mt-3 rounded-xl bg-navy px-4 py-3 text-center text-sm font-medium text-white shadow-[0_2px_8px_-4px_rgba(13,35,64,0.6)]">
                 Confirmar agendamento
               </div>
             </div>
@@ -185,8 +213,10 @@ export default function HomePage() {
             </p>
             <div className="mt-8 grid gap-8 md:grid-cols-3">
               {steps.map((step) => (
-                <div key={step.number}>
-                  <p className="font-mono text-xs text-moss">{step.number}</p>
+                <div key={step.number} className="border-t border-line pt-5">
+                  <span className="inline-flex h-7 items-center rounded-full bg-navy-soft px-2.5 font-mono text-xs font-medium text-navy-deep">
+                    {step.number}
+                  </span>
                   <h2 className="mt-3 text-lg font-semibold">{step.title}</h2>
                   <p className="mt-2 text-sm leading-relaxed text-ink-soft">
                     {step.text}
@@ -222,7 +252,7 @@ export default function HomePage() {
                 ].map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-line-strong px-3 py-1 text-xs text-ink-soft"
+                    className="rounded-full border border-line-strong px-3 py-1 text-xs text-ink-soft transition-colors hover:border-navy/40 hover:text-ink"
                   >
                     {item}
                   </span>
@@ -233,8 +263,11 @@ export default function HomePage() {
               {features.map((feature) => (
                 <div
                   key={feature.title}
-                  className="rounded-2xl border border-line bg-card p-5"
+                  className="rounded-2xl border border-line bg-card p-5 transition-[border-color,box-shadow] hover:border-line-strong hover:shadow-[0_10px_30px_-24px_rgba(21,24,33,0.5)]"
                 >
+                  <span className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-navy-soft text-navy">
+                    {feature.icon}
+                  </span>
                   <h3 className="text-sm font-semibold">{feature.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink-soft">
                     {feature.text}
@@ -246,8 +279,16 @@ export default function HomePage() {
         </section>
 
         <section className="mx-auto w-full max-w-6xl px-5 pb-20">
-          <div className="rounded-3xl bg-moss-deep px-8 py-12 text-white sm:px-12">
-            <div className="flex flex-wrap items-end justify-between gap-8">
+          <div className="relative overflow-hidden rounded-3xl bg-navy-deep px-8 py-12 text-white sm:px-12">
+            <div
+              className="pointer-events-none absolute -top-28 -right-20 h-72 w-72 rounded-full bg-white/10 blur-2xl"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute -bottom-32 left-1/4 h-64 w-64 rounded-full bg-white/5 blur-2xl"
+              aria-hidden
+            />
+            <div className="relative flex flex-wrap items-end justify-between gap-8">
               <div className="max-w-xl">
                 <h2 className="text-3xl font-semibold tracking-tight">
                   Pronto para encaixar o próximo cliente?
@@ -260,7 +301,7 @@ export default function HomePage() {
               <div className="flex flex-wrap gap-3">
                 <Link
                   href="/login"
-                  className="rounded-xl bg-white px-5 py-3 text-sm font-medium text-moss-deep transition-colors hover:bg-white/90"
+                  className="rounded-xl bg-white px-5 py-3 text-sm font-medium text-navy-deep transition-colors hover:bg-white/90"
                 >
                   Criar agenda
                 </Link>

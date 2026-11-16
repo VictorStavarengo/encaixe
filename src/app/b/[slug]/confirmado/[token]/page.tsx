@@ -55,8 +55,8 @@ async function ConfirmationContent({
         <div
           className={
             cancelled
-              ? "mb-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-clay-soft text-clay"
-              : "mb-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-moss-soft text-moss-deep"
+              ? "mb-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-clay-soft text-clay ring-4 ring-clay-soft/50"
+              : "mb-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-navy text-white shadow-[0_4px_14px_-6px_rgba(13,35,64,0.7)] ring-4 ring-navy-soft"
           }
         >
           {cancelled ? (
@@ -120,7 +120,7 @@ async function ConfirmationContent({
               cancelled ? (
                 <Badge tone="clay">cancelado</Badge>
               ) : booking.status === "CONFIRMED" ? (
-                <Badge tone="moss">confirmado</Badge>
+                <Badge tone="navy">confirmado</Badge>
               ) : (
                 <Badge tone="sand">aguardando o negócio</Badge>
               )
@@ -131,7 +131,7 @@ async function ConfirmationContent({
         <div className="mt-6 flex flex-wrap items-center gap-3">
           <Link
             href={`/b/${slug}`}
-            className="rounded-xl border border-line-strong px-4 py-2.5 text-sm font-medium transition-colors hover:bg-card"
+            className="rounded-xl border border-line-strong px-4 py-2.5 text-sm font-medium transition-colors hover:border-navy/40 hover:bg-card"
           >
             Agendar outro horário
           </Link>

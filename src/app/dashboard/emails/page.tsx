@@ -65,7 +65,7 @@ async function EmailsContent() {
                     {formatDateTimeLong(email.sentAt, business.timezone)}
                   </p>
                 </div>
-                <Badge tone={email.provider === "resend" ? "moss" : "sand"}>
+                <Badge tone={email.provider === "resend" ? "navy" : "sand"}>
                   {email.provider === "resend" ? "enviado" : "preview"}
                 </Badge>
               </div>

@@ -3,20 +3,20 @@
 @theme {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 
-  --color-paper: #f6f4ee;
-  --color-paper-deep: #eeeae0;
-  --color-card: #fffdf8;
-  --color-ink: #17150f;
-  --color-ink-soft: #4c4637;
-  --color-muted: #857d6b;
-  --color-line: #e3ded1;
-  --color-line-strong: #cec7b4;
-  --color-moss: #1f6b52;
-  --color-moss-deep: #15503d;
-  --color-moss-soft: #e6f0ea;
+  --color-paper: #f5f3ed;
+  --color-paper-deep: #eae7de;
+  --color-card: #fffdf9;
+  --color-ink: #151821;
+  --color-ink-soft: #474d5a;
+  --color-muted: #7b818f;
+  --color-line: #e2e0da;
+  --color-line-strong: #cac8c1;
+  --color-navy: #16345f;
+  --color-navy-deep: #0d2340;
+  --color-navy-soft: #e8eef7;
   --color-clay: #a9502b;
   --color-clay-soft: #f7e9e2;
-  --color-sand: #efeadf;
+  --color-sand: #ece8df;
 }
 
 @layer base {
@@ -27,12 +27,12 @@
   }
 
   ::selection {
-    background-color: var(--color-moss);
+    background-color: var(--color-navy);
     color: #fff;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-moss);
+    outline: 2px solid var(--color-navy);
     outline-offset: 2px;
   }
 }

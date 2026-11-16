@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useActionState, useState } from "react";
 import { createBookingAction, type BookingFormState } from "@/app/actions/booking";
 import { Alert, Button, Field, Input, Textarea } from "@/components/ui";
@@ -10,17 +11,26 @@ type SlotOption = {
   endsAt: string;
 };
 
+type NextDay = {
+  href: string;
+  label: string;
+};
+
 export function BookingForm({
   slug,
   serviceId,
   serviceName,
   serviceMeta,
+  dateLabel,
+  nextDay,
   slots,
 }: {
   slug: string;
   serviceId: string;
   serviceName: string;
   serviceMeta: string;
+  dateLabel: string;
+  nextDay: NextDay | null;
   slots: SlotOption[];
 }) {
   const [state, formAction, pending] = useActionState<BookingFormState, FormData>(
@@ -28,15 +38,31 @@ export function BookingForm({
     null,
   );
   const [selected, setSelected] = useState(slots[0]?.startsAt ?? "");
+  const selectedSlot = slots.find((slot) => slot.startsAt === selected);
 
   if (slots.length === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-line-strong bg-card px-5 py-10 text-center">
+      <div className="rounded-2xl border border-dashed border-line-strong bg-card px-6 py-10 text-center">
+        <span className="mx-auto mb-3 grid h-10 w-10 place-items-center rounded-full bg-navy-soft text-navy">
+          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <circle cx="12" cy="12" r="8.5" />
+            <path d="M12 7.5V12l3 2M3.5 3.5l17 17" />
+          </svg>
+        </span>
         <p className="text-sm font-medium">Nenhum horário livre nesse dia</p>
         <p className="mx-auto mt-1 max-w-sm text-sm text-muted">
-          Todos os horários desta data já foram preenchidos ou passaram. Escolha
-          outro dia na lista acima.
+          Todos os horários desta data já foram preenchidos ou passaram.
         </p>
+        {nextDay ? (
+          <Link
+            href={nextDay.href}
+            scroll={false}
+            className="mt-4 inline-flex items-center gap-1.5 rounded-xl bg-navy px-4 py-2.5 text-sm font-medium text-white shadow-[0_2px_8px_-4px_rgba(13,35,64,0.6)] transition-colors hover:bg-navy-deep"
+          >
+            Ver {nextDay.label}
+            <span aria-hidden>→</span>
+          </Link>
+        ) : null}
       </div>
     );
   }
@@ -53,7 +79,7 @@ export function BookingForm({
             <p className="text-sm font-medium">{serviceName}</p>
             <p className="mt-0.5 text-xs text-ink-soft">{serviceMeta}</p>
           </div>
-          <span className="rounded-full bg-moss-soft px-2.5 py-1 text-[11px] font-medium text-moss-deep">
+          <span className="rounded-full bg-navy-soft px-2.5 py-1 text-[11px] font-medium text-navy-deep">
             {slots.length} horários
           </span>
         </div>
@@ -72,8 +98,8 @@ export function BookingForm({
                   onClick={() => setSelected(slot.startsAt)}
                   className={
                     active
-                      ? "rounded-lg border border-moss bg-moss px-2 py-2.5 text-sm font-semibold text-white"
-                      : "rounded-lg border border-line bg-paper px-2 py-2.5 text-sm text-ink-soft transition-colors hover:border-line-strong hover:text-ink"
+                      ? "min-h-11 rounded-lg border border-navy bg-navy px-2 py-2.5 text-sm font-semibold text-white shadow-[0_2px_6px_-3px_rgba(13,35,64,0.55)]"
+                      : "min-h-11 rounded-lg border border-line bg-paper px-2 py-2.5 text-sm text-ink-soft transition-colors hover:border-navy/30 hover:text-ink"
                   }
                 >
                   {slot.label}
@@ -82,6 +108,16 @@ export function BookingForm({
             })}
           </div>
         </fieldset>
+      </div>
+
+      <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-navy/15 bg-navy-soft/70 px-4 py-3">
+        <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-navy-deep/70">
+          Você está marcando
+        </span>
+        <span className="text-sm font-semibold text-navy-deep">
+          {dateLabel}
+          {selectedSlot ? ` · ${selectedSlot.label}` : ""}
+        </span>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -145,12 +181,16 @@ export function BookingForm({
 
       {state?.error ? <Alert tone="error">{state.error}</Alert> : null}
 
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="text-xs text-muted">
+      <div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-xs leading-relaxed text-muted">
           Sem cadastro. Você recebe a confirmação por e-mail e pode cancelar pelo
           mesmo link.
         </p>
-        <Button type="submit" disabled={pending || !selected}>
+        <Button
+          type="submit"
+          disabled={pending || !selected}
+          className="w-full sm:w-auto"
+        >
           {pending ? "Reservando…" : "Confirmar agendamento"}
         </Button>
       </div>

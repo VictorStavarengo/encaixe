@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
+import type { ReactNode } from "react";
 import { fromZonedTime } from "date-fns-tz";
 import { CopyLink } from "@/components/copy-link";
 import { StatusBadge } from "@/components/status-badge";
@@ -84,14 +85,19 @@ async function Overview() {
         description="Acompanhe o movimento da semana e mantenha sua página pronta para receber agendamentos."
       />
 
-      <Card className="flex flex-wrap items-center justify-between gap-4 bg-moss-deep text-white">
-        <div>
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-white/60">
+      <Card className="relative flex flex-wrap items-center justify-between gap-4 overflow-hidden bg-navy-deep text-white">
+        <div
+          className="pointer-events-none absolute -top-20 right-10 h-48 w-48 rounded-full bg-white/10 blur-2xl"
+          aria-hidden
+        />
+        <div className="relative">
+          <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-white/60">
+            <span className="h-1.5 w-1.5 rounded-full bg-white/70" aria-hidden />
             sua página pública
           </p>
           <p className="mt-1 font-mono text-sm text-white/90">{publicUrl}</p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="relative flex items-center gap-2">
           <CopyLink url={publicUrl} />
           <Link
             href={`/b/${business.slug}`}
@@ -103,13 +109,49 @@ async function Overview() {
       </Card>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <Stat label="Hoje" value={todayCount} hint="agendamentos ativos" />
-        <Stat label="Aguardando" value={pendings} hint="pedidos para confirmar" />
-        <Stat label="Próximos 7 dias" value={weekCount} hint="na fila" />
+        <Stat
+          label="Hoje"
+          value={todayCount}
+          hint="agendamentos ativos"
+          icon={
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <rect x="3.5" y="5" width="17" height="15.5" rx="2.5" />
+              <path d="M3.5 9.5h17M8 3.5v3M16 3.5v3M9 14.5l2 2 4-4" />
+            </svg>
+          }
+        />
+        <Stat
+          label="Aguardando"
+          value={pendings}
+          hint="pedidos para confirmar"
+          icon={
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M7 3.5h10M7 20.5h10M8 3.5v3.2c0 1.7 1.2 2.6 2.4 3.3L12 11l1.6-1c1.2-.7 2.4-1.6 2.4-3.3V3.5M8 20.5v-3.2c0-1.7 1.2-2.6 2.4-3.3L12 13l1.6 1c1.2.7 2.4 1.6 2.4 3.3v3.2" />
+            </svg>
+          }
+        />
+        <Stat
+          label="Próximos 7 dias"
+          value={weekCount}
+          hint="na fila"
+          icon={
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <rect x="3.5" y="5" width="17" height="15.5" rx="2.5" />
+              <path d="M3.5 9.5h17M8 3.5v3M16 3.5v3M8 13.5h3M8 17h6" />
+            </svg>
+          }
+        />
         <Stat
           label="Receita prevista"
           value={formatPrice(weekRevenue)}
           hint="semana atual"
+          icon={
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <rect x="2.5" y="6.5" width="19" height="11" rx="2.5" />
+              <circle cx="12" cy="12" r="2.5" />
+              <path d="M6 9.5v5M18 9.5v5" />
+            </svg>
+          }
         />
       </div>
 
@@ -120,9 +162,10 @@ async function Overview() {
           </h2>
           <Link
             href="/dashboard/agendamentos"
-            className="text-sm text-moss hover:underline"
+            className="group inline-flex items-center gap-1 text-sm text-navy hover:underline"
           >
             Ver todos
+            <span className="transition-transform group-hover:translate-x-0.5">→</span>
           </Link>
         </div>
 
@@ -133,7 +176,7 @@ async function Overview() {
             action={
               <Link
                 href="/dashboard/pagina"
-                className="text-sm font-medium text-moss hover:underline"
+                className="text-sm font-medium text-navy hover:underline"
               >
                 Personalizar página
               </Link>
@@ -144,7 +187,7 @@ async function Overview() {
             {upcoming.map((booking) => (
               <li
                 key={booking.id}
-                className="flex flex-wrap items-center justify-between gap-3 px-5 py-4"
+                className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 transition-colors hover:bg-paper/60"
               >
                 <div>
                   <p className="text-sm font-medium">{booking.customerName}</p>
@@ -174,17 +217,24 @@ function Stat({
   label,
   value,
   hint,
+  icon,
 }: {
   label: string;
   value: number | string;
   hint: string;
+  icon: ReactNode;
 }) {
   return (
     <Card className="p-5">
-      <p className="text-xs font-medium uppercase tracking-[0.12em] text-muted">
-        {label}
-      </p>
-      <p className="mt-2 text-2xl font-semibold tracking-tight">{value}</p>
+      <div className="flex items-start justify-between gap-3">
+        <p className="text-xs font-medium uppercase tracking-[0.12em] text-muted">
+          {label}
+        </p>
+        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-navy-soft text-navy">
+          {icon}
+        </span>
+      </div>
+      <p className="mt-2 text-3xl font-semibold tracking-tight tabular-nums">{value}</p>
       <p className="mt-1 text-xs text-muted">{hint}</p>
     </Card>
   );

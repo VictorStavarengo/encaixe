@@ -78,7 +78,7 @@ async function BookingsContent({
           {bookings.map((booking) => (
             <li
               key={booking.id}
-              className="rounded-2xl border border-line bg-card p-5"
+              className="rounded-2xl border border-line bg-card p-5 transition-colors hover:border-line-strong"
             >
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div className="min-w-0">
@@ -119,7 +119,7 @@ async function BookingsContent({
                         <input type="hidden" name="status" value="CONFIRMED" />
                         <button
                           type="submit"
-                          className="rounded-lg bg-moss px-3 py-2 text-xs font-medium text-white transition-colors hover:bg-moss-deep"
+                          className="rounded-lg bg-navy px-3 py-2 text-xs font-medium text-white shadow-[0_1px_2px_rgba(13,35,64,0.25)] transition-colors hover:bg-navy-deep"
                         >
                           Confirmar
                         </button>

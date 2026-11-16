@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { Brand } from "@/components/brand";
 import { signIn } from "@/lib/auth";
 
 export const metadata: Metadata = {
@@ -14,9 +15,22 @@ export default function LoginPage() {
 
   return (
     <main className="grid min-h-screen lg:grid-cols-2">
-      <section className="relative hidden flex-col justify-between overflow-hidden bg-moss-deep p-12 text-white lg:flex">
-        <Link href="/" className="text-lg font-semibold tracking-tight">
-          encaixe
+      <section className="relative hidden flex-col justify-between overflow-hidden bg-navy-deep p-12 text-white lg:flex">
+        <div
+          className="pointer-events-none absolute -top-24 -left-16 h-80 w-80 rounded-full bg-white/10 blur-3xl"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute right-0 bottom-0 h-72 w-72 rounded-full bg-white/5 blur-3xl"
+          aria-hidden
+        />
+        <Link href="/" className="relative" aria-label="Encaixe — página inicial">
+          <span className="inline-flex items-center gap-2">
+            <span className="grid h-7 w-7 place-items-center rounded-lg bg-white/15 text-sm font-semibold leading-none">
+              e
+            </span>
+            <span className="text-lg font-semibold tracking-tight">encaixe</span>
+          </span>
         </Link>
         <div className="max-w-md">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-white/60">
@@ -30,10 +44,10 @@ export default function LoginPage() {
             confirme tudo em um painel só. Sem planilha, sem troca de mensagem.
           </p>
         </div>
-        <dl className="grid max-w-md grid-cols-3 gap-4 border-t border-white/15 pt-6 text-sm">
+        <dl className="relative grid max-w-md grid-cols-3 gap-4 border-t border-white/15 pt-6 text-[13px] leading-snug">
           <div>
-            <dt className="text-white/60">Página</dt>
-            <dd className="mt-1 font-medium">no ar em 1 min</dd>
+            <dt className="text-white/60">No ar em</dt>
+            <dd className="mt-1 font-medium">1 minuto</dd>
           </div>
           <div>
             <dt className="text-white/60">E-mail</dt>
@@ -48,9 +62,9 @@ export default function LoginPage() {
 
       <section className="flex items-center justify-center px-5 py-16">
         <div className="w-full max-w-sm">
-          <Link href="/" className="text-lg font-semibold tracking-tight lg:hidden">
-            encaixe
-          </Link>
+        <Link href="/" className="lg:hidden" aria-label="Encaixe — página inicial">
+          <Brand />
+        </Link>
           <h1 className="mt-8 text-2xl font-semibold tracking-tight lg:mt-0">
             Entrar no painel
           </h1>
@@ -69,7 +83,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={!githubConfigured}
-              className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-ink px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-black disabled:cursor-not-allowed disabled:opacity-50"
+              className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-navy px-4 py-3 text-sm font-medium text-white shadow-[0_2px_10px_-5px_rgba(13,35,64,0.7)] transition-colors hover:bg-navy-deep disabled:cursor-not-allowed disabled:opacity-50"
             >
               <GitHubMark />
               Continuar com GitHub
@@ -88,7 +102,7 @@ export default function LoginPage() {
           <p className="mt-8 text-xs text-muted">
             Só usamos seu nome e foto públicas do GitHub para identificar o
             painel.{" "}
-            <Link href="/b/studio-navalha" className="text-moss hover:underline">
+            <Link href="/b/studio-navalha" className="text-navy hover:underline">
               Ver uma página de exemplo
             </Link>
             .

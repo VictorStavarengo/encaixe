@@ -62,7 +62,7 @@ function renderBookingEmail(params: {
             ${address ? `<tr><td style="padding:12px 0;color:#7d7666;border-top:1px solid #f0ede6;">Endereço</td><td style="padding:12px 0;text-align:right;border-top:1px solid #f0ede6;">${address}</td></tr>` : ""}
           </table>
           <p style="margin:28px 0 8px;">
-            <a href="${pageUrl}" style="display:inline-block;background:#1f6b52;color:#ffffff;text-decoration:none;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:600;">Ver página do negócio</a>
+            <a href="${pageUrl}" style="display:inline-block;background:#16345f;color:#ffffff;text-decoration:none;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:600;">Ver página do negócio</a>
           </p>
           <p style="margin:0;font-size:13px;color:#7d7666;line-height:1.6;">Precisa cancelar? <a href="${cancelUrl}" style="color:#7d7666;">Cancele por aqui</a> e o horário volta a ficar disponível.</p>
         </td>

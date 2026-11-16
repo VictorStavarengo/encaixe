@@ -28,7 +28,7 @@ async function SettingsContent() {
           <Link
             href={`/b/${business.slug}`}
             target="_blank"
-            className="text-sm font-medium text-moss hover:underline"
+            className="text-sm font-medium text-navy hover:underline"
           >
             Abrir página ↗
           </Link>

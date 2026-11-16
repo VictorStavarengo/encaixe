@@ -59,7 +59,7 @@ async function ServicesContent() {
                   <div className="flex flex-wrap items-center gap-2">
                     <p className="text-sm font-semibold">{service.name}</p>
                     {service.active ? (
-                      <Badge tone="moss">ativo</Badge>
+                      <Badge tone="navy">ativo</Badge>
                     ) : (
                       <Badge tone="neutral">desativado</Badge>
                     )}

@@ -5,7 +5,21 @@ export function StatusBadge({
 }: {
   status: "PENDING" | "CONFIRMED" | "CANCELLED";
 }) {
-  if (status === "CONFIRMED") return <Badge tone="moss">confirmado</Badge>;
-  if (status === "CANCELLED") return <Badge tone="clay">cancelado</Badge>;
-  return <Badge tone="sand">pendente</Badge>;
+  if (status === "CONFIRMED")
+    return (
+      <Badge tone="navy" dot>
+        confirmado
+      </Badge>
+    );
+  if (status === "CANCELLED")
+    return (
+      <Badge tone="clay" dot>
+        cancelado
+      </Badge>
+    );
+  return (
+    <Badge tone="sand" dot>
+      pendente
+    </Badge>
+  );
 }
