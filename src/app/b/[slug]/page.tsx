@@ -23,19 +23,25 @@ export async function generateMetadata(
   props: PageProps<"/b/[slug]">,
 ): Promise<Metadata> {
   const { slug } = await props.params;
-  const business = await prisma.business.findUnique({
-    where: { slug },
-    select: { name: true, address: true },
-  });
 
-  if (!business) return { title: "Página não encontrada" };
+  try {
+    const business = await prisma.business.findUnique({
+      where: { slug },
+      select: { name: true, address: true },
+    });
 
-  return {
-    title: `${business.name} · agendamento`,
-    description: `Escolha um horário e marque seu atendimento em ${business.name}${
-      business.address ? ` — ${business.address}` : ""
-    }.`,
-  };
+    if (!business) return { title: "Página não encontrada" };
+
+    return {
+      title: `${business.name} · agendamento`,
+      description: `Escolha um horário e marque seu atendimento em ${business.name}${
+        business.address ? ` — ${business.address}` : ""
+      }.`,
+    };
+  } catch {
+    // Metadado é best-effort: se o banco cair, o error boundary da página mostra o aviso.
+    return { title: "Agendamento indisponível" };
+  }
 }
 
 export default function BookingPage(props: PageProps<"/b/[slug]">) {
