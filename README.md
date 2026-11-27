@@ -1,5 +1,7 @@
 # Encaixe
 
+[![CI](https://github.com/VictorStavarengo/encaixe/actions/workflows/ci.yml/badge.svg)](https://github.com/VictorStavarengo/encaixe/actions/workflows/ci.yml)
+
 Plataforma de agendamento para pequenos negócios (barbearias, clínicas, estúdios). O cliente escolhe serviço e horário em uma página pública renderizada no servidor; o dono do negócio gerencia serviços, expediente e agendamentos em um painel autenticado com GitHub. Cada reserva gera um e-mail de confirmação com link de cancelamento.
 
 ![Página pública de agendamento](docs/screenshots/agendamento-publico.jpg)
