@@ -112,7 +112,9 @@ prisma/
 
 ## Deploy
 
-O projeto roda na Vercel com Postgres do Supabase:
+O projeto roda na Vercel com Postgres do Supabase. Para conferir a conexão com o banco, `GET /api/health` responde 200 quando o Postgres responde e 503 com o código do erro quando não.
+
+Passo a passo:
 
 1. Crie um projeto no Supabase e use a connection string (pooler, `?sslmode=require`) como `DATABASE_URL`.
 2. Rode `npx prisma migrate deploy` apontando para o banco de produção.
