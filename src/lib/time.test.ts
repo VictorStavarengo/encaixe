@@ -113,10 +113,16 @@ describe("formatDateShort", () => {
 });
 
 describe("formatDateTimeLong", () => {
-  it("mostra data completa com hora", () => {
+  it("mostra data completa com ano e hora", () => {
     const text = plain(formatDateTimeLong(new Date("2026-11-27T12:30:00Z"), SP));
-    expect(text).toContain("sexta-feira, 27 de novembro");
+    expect(text).toContain("sexta-feira, 27 de novembro de 2026");
     expect(text).toContain("09:30");
+  });
+
+  it("usa o fuso do negócio, não o UTC", () => {
+    const text = plain(formatDateTimeLong(new Date("2026-12-07T02:30:00Z"), SP));
+    expect(text).toContain("domingo, 06 de dezembro de 2026");
+    expect(text).toContain("23:30");
   });
 });
 
