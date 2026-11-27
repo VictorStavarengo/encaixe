@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     template: "%s · Encaixe",
   },
   description:
-    "Página de agendamento pronta para barbearias, clínicas e estúdios: o cliente escolhe o horário e recebe a confirmação por e-mail.",
+    "Agendamento online para barbearias, clínicas e estúdios: página pública por link, horários sem conflito e confirmação automática por e-mail.",
   openGraph: {
     title: "Encaixe · agendamento online para pequenos negócios",
     description:
-      "Agenda online com página pública, confirmação automática por e-mail e painel de gestão.",
+      "Agendamento online para barbearias, clínicas e estúdios: página pública por link, horários sem conflito e confirmação automática por e-mail.",
     type: "website",
     locale: "pt_BR",
     siteName: "Encaixe",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Encaixe · agendamento online para pequenos negócios",
     description:
-      "Agenda online com página pública, confirmação automática por e-mail e painel de gestão.",
+      "Agendamento online para barbearias, clínicas e estúdios: página pública por link, horários sem conflito e confirmação automática por e-mail.",
     images: ["/og.jpg"],
   },
 };
