@@ -23,7 +23,23 @@ export const metadata: Metadata = {
       "Agenda online com página pública, confirmação automática por e-mail e painel de gestão.",
     type: "website",
     locale: "pt_BR",
+    siteName: "Encaixe",
     url: appUrl,
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1440,
+        height: 900,
+        alt: "Painel do Encaixe com a agenda do negócio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Encaixe · agendamento online para pequenos negócios",
+    description:
+      "Agenda online com página pública, confirmação automática por e-mail e painel de gestão.",
+    images: ["/og.jpg"],
   },
 };
 
