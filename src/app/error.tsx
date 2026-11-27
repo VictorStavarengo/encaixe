@@ -26,7 +26,7 @@ export default function GlobalError({
           <span className="h-1.5 w-1.5 rounded-full bg-clay" aria-hidden />
           algo saiu do esperado
         </p>
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+        <h1 className="mt-4 font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">
           Não foi possível carregar esta página
         </h1>
         <p className="mt-4 max-w-lg text-base leading-relaxed text-ink-soft">

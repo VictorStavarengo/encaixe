@@ -14,13 +14,13 @@ type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
 
 const buttonVariants: Record<ButtonVariant, string> = {
   primary:
-    "bg-navy text-white border border-navy shadow-[0_1px_2px_rgba(13,35,64,0.28)] hover:bg-navy-deep hover:border-navy-deep disabled:hover:bg-navy active:translate-y-px",
+    "bg-navy text-white border border-navy shadow-[0_1px_2px_rgba(10,42,86,0.28)] enabled:hover:-translate-y-px enabled:hover:bg-navy-deep enabled:hover:border-navy-deep enabled:hover:shadow-[0_10px_22px_-14px_rgba(10,42,86,0.65)] disabled:hover:bg-navy active:translate-y-0",
   secondary:
-    "bg-card text-ink border border-line-strong hover:border-navy/40 hover:bg-white hover:text-navy-deep active:translate-y-px",
+    "bg-card text-ink border border-line-strong enabled:hover:-translate-y-px enabled:hover:border-navy/40 enabled:hover:bg-white enabled:hover:text-navy-deep enabled:hover:shadow-[0_8px_18px_-14px_rgba(11,17,32,0.45)] active:translate-y-0",
   ghost:
-    "bg-transparent text-ink-soft border border-transparent hover:bg-paper-deep hover:text-ink",
+    "bg-transparent text-ink-soft border border-transparent enabled:hover:bg-paper-deep enabled:hover:text-ink",
   danger:
-    "bg-transparent text-clay border border-clay/30 hover:bg-clay-soft hover:border-clay/60",
+    "bg-transparent text-clay border border-clay/30 enabled:hover:bg-clay-soft enabled:hover:border-clay/60",
 };
 
 export function Button({
@@ -41,7 +41,7 @@ export function Button({
 }
 
 const fieldBase =
-  "w-full rounded-xl border border-line-strong bg-card px-3.5 py-2.5 text-sm text-ink placeholder:text-muted/70 transition-colors focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy/15 disabled:opacity-60";
+  "w-full rounded-xl border border-line-strong bg-card px-3.5 py-2.5 text-sm text-ink placeholder:text-muted/70 transition-[border-color,box-shadow] duration-150 hover:border-navy/40 focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy/15 disabled:opacity-60";
 
 export function Input({
   className,
@@ -79,7 +79,7 @@ export function Field({
 }) {
   return (
     <label htmlFor={htmlFor} className="flex flex-col gap-1.5">
-      <span className="text-xs font-medium uppercase tracking-[0.12em] text-muted">
+      <span className="text-xs font-semibold uppercase tracking-[0.12em] text-ink-soft">
         {label}
       </span>
       {children}
@@ -102,7 +102,7 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-line bg-card p-6 shadow-[0_1px_0_rgba(23,21,15,0.03)]",
+        "rounded-2xl border border-line bg-card p-6 shadow-[0_1px_2px_rgba(11,17,32,0.04)]",
         className,
       )}
     >
@@ -167,7 +167,7 @@ export function PageTitle({
             {eyebrow}
           </p>
         ) : null}
-        <h1 className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+        <h1 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
           {title}
         </h1>
         {description ? (

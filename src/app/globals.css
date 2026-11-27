@@ -2,21 +2,22 @@
 
 @theme {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sora), var(--font-geist-sans), ui-sans-serif, sans-serif;
 
-  --color-paper: #f5f3ed;
-  --color-paper-deep: #eae7de;
-  --color-card: #fffdf9;
-  --color-ink: #151821;
-  --color-ink-soft: #474d5a;
-  --color-muted: #7b818f;
-  --color-line: #e2e0da;
-  --color-line-strong: #cac8c1;
-  --color-navy: #16345f;
-  --color-navy-deep: #0d2340;
-  --color-navy-soft: #e8eef7;
-  --color-clay: #a9502b;
-  --color-clay-soft: #f7e9e2;
-  --color-sand: #ece8df;
+  --color-paper: #ffffff;
+  --color-paper-deep: #f2f4f8;
+  --color-card: #ffffff;
+  --color-ink: #0b1120;
+  --color-ink-soft: #3b4352;
+  --color-muted: #667085;
+  --color-line: #e3e7ee;
+  --color-line-strong: #c7cedb;
+  --color-navy: #123f7c;
+  --color-navy-deep: #0a2a56;
+  --color-navy-soft: #e8effa;
+  --color-clay: #b3401a;
+  --color-clay-soft: #fbeae3;
+  --color-sand: #edf0f5;
 }
 
 @layer base {

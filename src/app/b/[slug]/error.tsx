@@ -27,7 +27,7 @@ export default function BookingError({
           <span className="h-1.5 w-1.5 rounded-full bg-clay" aria-hidden />
           agenda indisponível
         </p>
-        <h1 className="mt-4 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+        <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
           Não foi possível carregar os horários
         </h1>
         <p className="mt-4 max-w-lg text-base leading-relaxed text-ink-soft">

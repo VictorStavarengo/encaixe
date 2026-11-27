@@ -106,7 +106,7 @@ export default function HomePage() {
               <span className="h-1.5 w-1.5 rounded-full bg-navy" aria-hidden />
               agendamento online
             </p>
-            <h1 className="mt-4 text-4xl leading-[1.05] font-semibold tracking-tight text-ink sm:text-5xl lg:text-6xl">
+            <h1 className="mt-4 font-display text-4xl leading-[1.05] font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl">
               Sua agenda cheia,
               <br />
               sem trocar mensagem.

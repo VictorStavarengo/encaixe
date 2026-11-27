@@ -16,7 +16,7 @@ export default function DashboardError({
         <span className="h-1.5 w-1.5 rounded-full bg-clay" aria-hidden />
         painel indisponível
       </p>
-      <h1 className="mt-3 text-xl font-semibold tracking-tight text-ink">
+      <h1 className="mt-3 font-display text-xl font-bold tracking-tight text-ink">
         Não foi possível carregar o painel
       </h1>
       <p className="mt-2 text-sm leading-relaxed text-ink-soft">
