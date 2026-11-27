@@ -110,16 +110,16 @@ async function BookingContent({
 
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="border-b border-line bg-card/60">
+      <header className="border-b border-line bg-card">
         <div className="mx-auto flex w-full max-w-3xl items-start gap-4 px-5 py-8">
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-navy text-lg font-semibold uppercase text-white shadow-[0_2px_8px_-3px_rgba(13,35,64,0.6)]">
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-navy font-display text-lg font-bold uppercase text-white shadow-[0_6px_16px_-8px_rgba(10,42,86,0.65)]">
             {initials(business.name)}
           </span>
           <div className="flex min-w-0 flex-col gap-1">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-navy">
               agende seu horário
             </p>
-            <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            <h1 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
               {business.name}
             </h1>
             <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-ink-soft">
@@ -168,12 +168,12 @@ async function BookingContent({
                       scroll={false}
                       className={
                         active
-                          ? "flex items-center justify-between gap-3 rounded-xl border border-navy bg-navy-soft px-4 py-3 shadow-[0_1px_3px_rgba(13,35,64,0.12)]"
-                          : "flex items-center justify-between gap-3 rounded-xl border border-line bg-card px-4 py-3 transition-[border-color,box-shadow] hover:border-navy/30 hover:shadow-[0_8px_24px_-20px_rgba(21,24,33,0.6)]"
+                          ? "flex items-center justify-between gap-3 rounded-xl border border-navy bg-navy-soft px-4 py-3 ring-1 ring-navy/10 transition-shadow duration-150 hover:shadow-[0_10px_22px_-18px_rgba(10,42,86,0.45)]"
+                          : "flex items-center justify-between gap-3 rounded-xl border border-line bg-card px-4 py-3 transition-[border-color,box-shadow,transform] duration-150 hover:-translate-y-0.5 hover:border-navy/40 hover:shadow-[0_12px_24px_-20px_rgba(11,17,32,0.5)]"
                       }
                     >
                       <div>
-                        <p className="text-sm font-medium">{service.name}</p>
+                        <p className="text-sm font-semibold">{service.name}</p>
                         <p className="mt-0.5 text-xs text-ink-soft">
                           {formatDuration(service.durationMin)}
                         </p>
@@ -182,8 +182,8 @@ async function BookingContent({
                         <span
                           className={
                             active
-                              ? "text-sm font-semibold text-navy-deep"
-                              : "text-sm font-medium text-ink-soft"
+                              ? "text-sm font-bold text-navy-deep"
+                              : "text-sm font-semibold text-ink"
                           }
                         >
                           {service.priceCents === 0
@@ -205,7 +205,7 @@ async function BookingContent({
 
             <section>
               <SectionHeader step="2" title="Escolha o dia" />
-              <div className="hide-scrollbar -mx-5 flex snap-x gap-2 overflow-x-auto px-5 pb-1 [mask-image:linear-gradient(to_right,transparent,black_20px,black_calc(100%-32px),transparent)]">
+              <div className="hide-scrollbar -mx-5 flex snap-x gap-2 overflow-x-auto px-5 pb-1 [mask-image:linear-gradient(to_right,black_calc(100%-32px),transparent)]">
                 {days.map((day) => {
                   const active = day.iso === selectedDate;
 
@@ -217,8 +217,8 @@ async function BookingContent({
                       aria-current={active ? "date" : undefined}
                       className={
                         active
-                          ? "min-w-16 snap-start rounded-xl border border-navy bg-navy px-3 py-2 text-center text-white shadow-[0_2px_8px_-3px_rgba(13,35,64,0.55)]"
-                          : "min-w-16 snap-start rounded-xl border border-line bg-card px-3 py-2 text-center text-ink-soft transition-colors hover:border-navy/30 hover:text-ink"
+                          ? "min-w-16 snap-start rounded-xl border border-navy bg-navy px-3 py-2 text-center text-white shadow-[0_6px_14px_-8px_rgba(10,42,86,0.6)] transition-colors duration-150 hover:border-navy-deep hover:bg-navy-deep"
+                          : "min-w-16 snap-start rounded-xl border border-line bg-card px-3 py-2 text-center text-ink-soft transition-[border-color,color,background-color,box-shadow,transform] duration-150 hover:-translate-y-0.5 hover:border-navy/40 hover:bg-navy-soft/60 hover:text-ink hover:shadow-[0_10px_20px_-18px_rgba(11,17,32,0.5)]"
                       }
                     >
                       <span className="block text-[11px] uppercase tracking-wide opacity-80">
@@ -241,7 +241,7 @@ async function BookingContent({
                 step="3"
                 title="Escolha o horário"
                 aside={
-                  <span className="text-xs text-muted">
+                  <span className="text-xs font-medium text-ink-soft">
                     {selectedDay.weekday}, {selectedDay.day}/{selectedDay.month}
                   </span>
                 }
@@ -308,10 +308,10 @@ function SectionHeader({
   return (
     <div className="mb-3 flex items-center justify-between gap-3">
       <div className="flex items-center gap-2.5">
-        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-ink text-[11px] font-semibold text-white">
+        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-navy font-display text-[11px] font-bold text-white">
           {step}
         </span>
-        <h2 className="text-sm font-semibold uppercase tracking-[0.1em] text-ink-soft">
+        <h2 className="text-[13px] font-semibold uppercase tracking-[0.12em] text-ink">
           {title}
         </h2>
       </div>

@@ -57,7 +57,7 @@ export function BookingForm({
           <Link
             href={nextDay.href}
             scroll={false}
-            className="mt-4 inline-flex items-center gap-1.5 rounded-xl bg-navy px-4 py-2.5 text-sm font-medium text-white shadow-[0_2px_8px_-4px_rgba(13,35,64,0.6)] transition-colors hover:bg-navy-deep"
+            className="mt-4 inline-flex items-center gap-1.5 rounded-xl bg-navy px-4 py-2.5 text-sm font-medium text-white shadow-[0_2px_8px_-4px_rgba(10,42,86,0.6)] transition-[background-color,box-shadow,transform] duration-150 hover:-translate-y-0.5 hover:bg-navy-deep hover:shadow-[0_10px_22px_-14px_rgba(10,42,86,0.6)]"
           >
             Ver {nextDay.label}
             <span aria-hidden>→</span>
@@ -73,13 +73,13 @@ export function BookingForm({
       <input type="hidden" name="serviceId" value={serviceId} />
       <input type="hidden" name="startsAt" value={selected} />
 
-      <div className="rounded-2xl border border-line bg-card p-5">
+      <div className="rounded-2xl border border-line bg-paper-deep/60 p-5">
         <div className="flex items-center justify-between gap-3 border-b border-line pb-3">
           <div>
-            <p className="text-sm font-medium">{serviceName}</p>
+            <p className="text-sm font-semibold">{serviceName}</p>
             <p className="mt-0.5 text-xs text-ink-soft">{serviceMeta}</p>
           </div>
-          <span className="rounded-full bg-navy-soft px-2.5 py-1 text-[11px] font-medium text-navy-deep">
+          <span className="rounded-full bg-navy-soft px-2.5 py-1 text-[11px] font-semibold text-navy-deep">
             {slots.length} horários
           </span>
         </div>
@@ -98,8 +98,8 @@ export function BookingForm({
                   onClick={() => setSelected(slot.startsAt)}
                   className={
                     active
-                      ? "min-h-11 rounded-lg border border-navy bg-navy px-2 py-2.5 text-sm font-semibold text-white shadow-[0_2px_6px_-3px_rgba(13,35,64,0.55)]"
-                      : "min-h-11 rounded-lg border border-line bg-paper px-2 py-2.5 text-sm text-ink-soft transition-colors hover:border-navy/30 hover:text-ink"
+                      ? "min-h-11 rounded-lg border border-navy bg-navy px-2 py-2.5 text-sm font-semibold text-white shadow-[0_6px_14px_-8px_rgba(10,42,86,0.6)] transition-colors duration-150 hover:border-navy-deep hover:bg-navy-deep"
+                      : "min-h-11 rounded-lg border border-line bg-card px-2 py-2.5 text-sm font-medium text-ink-soft transition-[border-color,color,background-color,box-shadow,transform] duration-150 hover:-translate-y-0.5 hover:border-navy/40 hover:text-ink hover:shadow-[0_10px_18px_-16px_rgba(11,17,32,0.55)]"
                   }
                 >
                   {slot.label}
@@ -110,11 +110,11 @@ export function BookingForm({
         </fieldset>
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-navy/15 bg-navy-soft/70 px-4 py-3">
-        <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-navy-deep/70">
+      <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-navy/20 bg-navy-soft px-4 py-3">
+        <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-navy-deep/80">
           Você está marcando
         </span>
-        <span className="text-sm font-semibold text-navy-deep">
+        <span className="text-sm font-bold text-navy-deep">
           {dateLabel}
           {selectedSlot ? ` · ${selectedSlot.label}` : ""}
         </span>
@@ -182,7 +182,7 @@ export function BookingForm({
       {state?.error ? <Alert tone="error">{state.error}</Alert> : null}
 
       <div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs leading-relaxed text-muted">
+        <p className="text-xs leading-relaxed text-ink-soft">
           Sem cadastro. Você recebe a confirmação por e-mail e pode cancelar pelo
           mesmo link.
         </p>

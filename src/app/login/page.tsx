@@ -29,14 +29,14 @@ export default function LoginPage() {
             <span className="grid h-7 w-7 place-items-center rounded-lg bg-white/15 text-sm font-semibold leading-none">
               e
             </span>
-            <span className="text-lg font-semibold tracking-tight">encaixe</span>
+            <span className="font-display text-lg font-bold tracking-tight">encaixe</span>
           </span>
         </Link>
         <div className="max-w-md">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-white/60">
             agendamento online
           </p>
-          <h2 className="mt-4 text-4xl leading-tight font-semibold">
+          <h2 className="mt-4 font-display text-4xl leading-tight font-bold">
             Um link, a agenda cheia.
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-white/75">
@@ -65,7 +65,7 @@ export default function LoginPage() {
         <Link href="/" className="lg:hidden" aria-label="Encaixe — página inicial">
           <Brand />
         </Link>
-          <h1 className="mt-8 text-2xl font-semibold tracking-tight lg:mt-0">
+          <h1 className="mt-8 font-display text-2xl font-bold tracking-tight lg:mt-0">
             Entrar no painel
           </h1>
           <p className="mt-2 text-sm leading-relaxed text-ink-soft">
