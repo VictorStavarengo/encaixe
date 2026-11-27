@@ -9,10 +9,23 @@ jobs:
   check:
     runs-on: ubuntu-24.04
     env:
-      # Valores de placeholder: o build não conecta no banco, só precisa das variáveis definidas.
       DATABASE_URL: postgres://user:password@localhost:5432/encaixe
       AUTH_SECRET: ci-placeholder
       NEXT_PUBLIC_APP_URL: http://localhost:3000
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: encaixe
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U user -d encaixe"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - uses: actions/checkout@v7
 
@@ -27,8 +40,14 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Testes
+      - name: Testes unitários
         run: npm test
+
+      - name: Migrações no banco de teste
+        run: npm run db:deploy
+
+      - name: Testes de integração
+        run: npm run test:db
 
       - name: Build
         run: npm run build

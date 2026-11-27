@@ -61,6 +61,25 @@ O seed cria o negócio **Barbearia Doze e Meia** em `/b/doze-e-meia`, com três 
 
 Para entrar no painel, crie um OAuth App em GitHub → Settings → Developer settings → OAuth Apps com callback `http://localhost:3000/api/auth/callback/github` e coloque as credenciais no `.env`. Sem elas a tela de login avisa que o provedor não está configurado.
 
+## Testes
+
+```bash
+npm test        # helpers puros (data, fuso, formatação) — não precisa de banco
+npm run test:db # integração da agenda — precisa de DATABASE_URL
+```
+
+Os testes de integração cobrem a geração de horários (expediente, passo de 30 min, duração e antecedência mínima), bloqueio por sobreposição, agendamentos cancelados, `isSlotStillAvailable` e o índice único parcial de slot ativo. Para rodar localmente:
+
+```bash
+docker run -d --name encaixe-pg-test -p 5433:5432 \
+  -e POSTGRES_PASSWORD=devpass -e POSTGRES_DB=encaixe postgres:17-alpine
+
+DATABASE_URL="postgres://postgres:devpass@localhost:5433/encaixe" npx prisma migrate deploy
+DATABASE_URL="postgres://postgres:devpass@localhost:5433/encaixe" npm run test:db
+```
+
+O CI sobe um Postgres 17 como service container, aplica as migrações e roda as duas suítes antes do build.
+
 ## Variáveis de ambiente
 
 | Variável | Obrigatória | Descrição |
